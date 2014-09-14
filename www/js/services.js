@@ -20,10 +20,7 @@ angular.module('starter.services', [])
     var currReact = alertCenter.notificationList[notificationIdx].reactions[reactionIdx];
     console.log("react", notificationIdx, reactionIdx, "-->", currNotif.id);
     if(true || currReact.closeNotification){ //permanent true - simplify API case
-      setTimeout(function(){
-        currNotif.canHide = true;
-        $http.post("http://buddhabrudda.mybluemix.net/read/", {id:currNotif.id}); //This is postId
-      }, 1000);
+      this.hideNotification(currNotif);
     }
     if(typeof currNotif.callback!='undefined'){
       $http.post(currNotif.callback, {name:userId, action:currReact.text}); ////
@@ -34,6 +31,15 @@ angular.module('starter.services', [])
       console.log("redirect to", currReact.redirection);
     }
   };
+  this.hideNotificationByIdx = function(notificationIdx){
+    this.hideNotification( alertCenter.notificationList[notificationIdx] );
+  }
+  this.hideNotification = function(currNotif){
+    setTimeout(function(){
+      currNotif.canHide = true;
+      $http.post("http://buddhabrudda.mybluemix.net/read/", {id:currNotif.id}); //This is postId
+    }, 1000);
+  }
 
 }]);
 

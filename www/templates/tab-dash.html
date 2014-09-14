@@ -3,6 +3,7 @@
   	
       <ion-list>
         <ion-item ng-repeat="notification in alertCenter.notificationList"> <hideWrap ng-hide="notification.canHide">
+          <div style="position:fixed; right:10px;" ng-click="alertCenter.hideNotificationByIdx({{$index +1}}-1)">[x]</div>
           {{notification.image}}&nbsp;{{notification.user}}
           <br> {{notification.user}}&nbsp;{{notification.ago}}
           <br> {{notification.text}} &nbsp;
