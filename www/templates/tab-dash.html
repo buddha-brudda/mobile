@@ -1,12 +1,16 @@
 <ion-view title="Dashboard Notifications" ng-controller="AlertCenterCtrl as alertCenter">
   <ion-content>
   	
-      <ion-list>
-        <ion-item ng-repeat="notification in alertCenter.notificationList"> <hideWrap ng-hide="notification.canHide">
-          <div style="position:fixed; right:10px;">{{notification.ago}}&nbsp;&nbsp;<a ng-click="alertCenter.hideNotificationByIdx({{$index +1}}-1)">[x]</a></div>
-          {{notification.image}}&nbsp;{{notification.user}}
+      <ion-list ng-repeat="notification in alertCenter.notificationList"> <hideWrap ng-hide="notification.canHide">
+        <ion-item>
+          <a class="item item-icon-left item-icon-right">
+            <img ng-src="{{notification.image}}" style="width:50px"/>
+
+            <span class="item-note">&nbsp;{{notification.sender}}
+            {{notification.ago}}&nbsp;&nbsp; <i class="ion-close-circled" ng-click="alertCenter.hideNotificationByIdx({{$index +1}}-1)"></i></span>
+          </a>
           <br> {{notification.text}} &nbsp;
-          <span ng-repeat="reaction in notification.reactions" ng-click="alertCenter.react({{$parent.$index +1}}-1, {{$index +1}}-1)" >
+          <span ng-repeat="reaction in notification.reactions" ng-click="alertCenter.react({{$parent.$index +1}}-1, {{$index +1}}-1)">
             <a>{{reaction.text}}</a>&nbsp;&nbsp;
           </span>
           <!-- <div class="card"> -->
