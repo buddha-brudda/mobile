@@ -1,10 +1,14 @@
 <ion-view title="Dashboard Notifications" ng-controller="AlertCenterCtrl as alertCenter">
   <ion-content class="padding">
-  	<div class="row responsive-sm" ng-repeat="notification in alertCenter.notificationList">
-  		<center><div class="col">{{notification.image}}&nbsp;{{notification.user}}
-        <br>{{notification.user}}&nbsp;{{notification.ago}}
-        <br>{{notification.text}}
-      </div></center>
+  	<div class="row responsive-sm">
+      <ion-list>
+        <ion-item ng-repeat="notification in alertCenter.notificationList">
+          {{notification.image}}&nbsp;{{notification.user}}
+          <br>{{notification.user}}&nbsp;{{notification.ago}}
+          <br>{{notification.text}}
+        </ion-item>
+
+      </ion-list>
   	</div>
   </ion-content>
 </ion-view>
