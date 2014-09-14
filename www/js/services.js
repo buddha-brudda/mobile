@@ -37,7 +37,7 @@ angular.module('starter.services', [])
   this.hideNotification = function(currNotif, delayInSec){
     setTimeout(function(){
       currNotif.canHide = true;
-      $http.post("http://buddhabrudda.mybluemix.net/read/", {id:currNotif.id}); //This is postId
+      $http.post("http://buddhabrudda.mybluemix.net/read/4699553379", {id:currNotif.id}); //This is postId
     }, delayInSec*1000);
   }
 
