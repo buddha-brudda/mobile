@@ -2,6 +2,7 @@ angular.module('starter.services', [])
 
 .controller('AlertCenterCtrl', ['$http', function($http){
   var userId = "Ian";
+  var userNumber = "4699553379";
   var alertCenter = this;
   alertCenter.notificationList = [];
   // alertCenter.notificationList = [{time:"2014-09-14T00:50:30.048Z", callback:"http:///google.com", reactions:[{text:"upvote", closeNotification:true},{text:"downvote"}]},   {time:"2014-09-14T00:40:30.048Z"}];
@@ -23,6 +24,7 @@ angular.module('starter.services', [])
       this.hideNotification(currNotif, 1);
     }
     if(typeof currNotif.callback!='undefined'){
+      console.log("@@@",currNotif.callback);
       $http.post(currNotif.callback, {name:userId, action:currReact.text}); ////
       currNotif.callbackResponse = currReact.text+" is successful.";
       console.log("callback was done for",currReact.text);
@@ -33,13 +35,13 @@ angular.module('starter.services', [])
   };
   this.hideNotificationByIdx = function(notificationIdx){
     alertCenter.hideNotification( alertCenter.notificationList[notificationIdx], 0 );
-  }
+  };
   this.hideNotification = function(currNotif, delayInSec){
     setTimeout(function(){
       currNotif.canHide = true;
-      $http.post("http://buddhabrudda.mybluemix.net/read/", {id:currNotif.id}); //This is postId
+      $http.post("http://buddhabrudda.mybluemix.net/read/"+userNumber, {id:currNotif.id}); //This is postId
     }, delayInSec*1000);
-  }
+  };
 
 }]);
 
