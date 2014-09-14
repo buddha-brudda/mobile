@@ -5,12 +5,14 @@ angular.module('starter.services', [])
   alertCenter.notificationList = [];
   // alertCenter.notificationList = [{date:"2014-09-14T00:50:30.048Z"},{date:"2014-09-14T00:40:30.048Z"}];
   notificationList_dateISOString_toDateAgo(alertCenter.notificationList);
-  $http.get("http://buddhabrudda.mybluemix.net/notifications/4699553379")
-  .success(function(data){
-    alertCenter.notificationList = data;
-    // alertCenter.notificationList = [{time:"2014-09-14T00:50:30.048Z"},{time:"2014-09-14T00:40:30.048Z"}];
-    notificationList_dateISOString_toDateAgo(alertCenter.notificationList);
-  });
+  setInterval(function(){
+    $http.get("http://buddhabrudda.mybluemix.net/notifications/4699553379")
+    .success(function(data){
+      alertCenter.notificationList = data;
+      // alertCenter.notificationList = [{time:"2014-09-14T00:50:30.048Z"},{time:"2014-09-14T00:40:30.048Z"}];
+      notificationList_dateISOString_toDateAgo(alertCenter.notificationList);
+    });
+  }, 3000);
 }]);
 
 function notificationList_dateISOString_toDateAgo(notificationList){
