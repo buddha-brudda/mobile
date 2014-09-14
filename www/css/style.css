@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+.notification_test{
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(125,143,171) #000 rgba(0,0,0,0.4) #000;
+  background-color: #455C82;
+  /*background-image: -webkit-gradient(linear,left top,left bottom,from(#563d7c),to(#6f5499));*/
+ 
+}
+
+
+-webkit-gradient(linear,left top,left bottom,from(#563d7c),to(#6f5499))
